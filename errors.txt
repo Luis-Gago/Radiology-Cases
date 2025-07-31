@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label correct_bodywall_image is defined twice, at File "game/cholecystitis.rpy", line 228:
-label correct_bodywall_image:
-and File "game/cholecystitis.rpy", line 391:
-label correct_bodywall_image:
-
+File "game/script.rpy", line 7: invalid syntax. Perhaps you forgot a comma?
+    Character("Luis Gago", image="LuisGago" color="#c70909c1")
+                                 ^^^^^^^^^^^^^^^^
 
 Ren'Py Version: Ren'Py 8.4.1.25072401
-Tue Jul 29 17:30:15 2025
+Thu Jul 31 13:35:53 2025

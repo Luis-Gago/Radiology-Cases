@@ -45,6 +45,11 @@ label cholecystitis:
     $ lung_images = [f"chole/Acute cholecystitis lung/ct_slice_{i:03d}.png" for i in range(1, 495)]
     $ image_sets = [bone_images, soft_tissue_images, lung_images]
     $ set_names = ["Bone", "Soft Tx", "Lung"]
+
+    # Initialize minimal caching for web deployment
+    $ dicom_cache.aggressive_preload(image_sets[0], 0, 30)  
+    $ dicom_cache.preload_all_sets(image_sets, 0) 
+
     show screen DICOMViewer(images=image_sets[0], image_sets=image_sets, current_set=0, set_names=set_names)
     
     # Show the Radiology Report screen

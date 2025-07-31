@@ -3,8 +3,10 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define a = Character("Attending", image="DrLevine", color="#c70909c1")
+define a = Character("Dr. Levine", image="DrLevine", color="#c70909c1")
+define l = Character("Luis Gago", image="LuisGago", color="#c70909c1")
 image side DrLevine = "DrLevine.png"
+image side LuisGago = "LuisGago@1.5.png"
 
 # Declare score
 default total_score = 0
@@ -95,12 +97,13 @@ label emergency_cases:
 
 label citations_emergency:
     scene bg readingroom
-    "Citations."
-    "Information about windowing:  Zatz LM. Basic principles of computed tomography scanning. In: Newton TH, Potts DG, (Eds.). Technical Aspects of Computed Tomography. Mosby, St. Louis. 1981, pp. 3853-3876."
-    "Information about lung nodules: Ahn M, Gleeson T, Chan I et al. Perifissural Nodules Seen at CT Screening for Lung Cancer. Radiology. 2010;254(3):949-56. doi:10.1148/radiol.09090031"
-    "Information about Riedel lobe: Kudo M. Riedel's lobe of the liver and its clinical implication. Intern. Med. 2000;39 (2): 87-8."
-    "Information about appendicitis: Byas Deb Ghosh. Human Anatomy for Students. (2007) ISBN: 9788180618666"
-    "Liver Lesion ACR Criteria: https://acsearch.acr.org/docs/69472/Narrative"
+    l "Citations."
+    l "Case presented by Luis Gago, MS4 at Northwestern Feinberg School of Medicine"
+    l "Information about windowing:  Zatz LM. Basic principles of computed tomography scanning. In: Newton TH, Potts DG, (Eds.). Technical Aspects of Computed Tomography. Mosby, St. Louis. 1981, pp. 3853-3876."
+    l "Information about lung nodules: Ahn M, Gleeson T, Chan I et al. Perifissural Nodules Seen at CT Screening for Lung Cancer. Radiology. 2010;254(3):949-56. doi:10.1148/radiol.09090031"
+    l "Information about Riedel lobe: Kudo M. Riedel's lobe of the liver and its clinical implication. Intern. Med. 2000;39 (2): 87-8."
+    l "Information about appendicitis: Byas Deb Ghosh. Human Anatomy for Students. (2007) ISBN: 9788180618666"
+    l "Liver Lesion ACR Criteria: https://acsearch.acr.org/docs/69472/Narrative"
 
     jump start
 
