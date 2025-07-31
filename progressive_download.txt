@@ -1,0 +1,13 @@
+# RenPyWeb progressive download rules - first match applies"
+# '+' = progressive download, '-' = keep in game.data (default)
+# See https://www.renpy.org/doc/html/build.html#classifying-and-ignoring-files for matching
+#
+# +/- type path
+- image game/gui/**
+# Keep some key images in main bundle for immediate access
+- image game/images/bg*
+- image game/images/DrLevine.png
+# Progressive download medical images for sliding window caching
++ image game/images/**
++ music game/audio/**
++ voice game/voice/**

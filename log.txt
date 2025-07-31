@@ -1,0 +1,26 @@
+2025-07-31 04:51:47 UTC
+macOS-15.3.2-arm64-arm-64bit
+Ren'Py 8.4.1.25072401
+
+Early init took 58 ms
+Loading error handling took 27 ms
+Loading script took 78 ms
+Loading save slot metadata took 24 ms
+Loading persistent took 0 ms
+Running init code took 56 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Dump and make backups took 36 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 28 ms
+DPI scale factor: 1.000000
+Creating interface object took 0 ms
+Init translation took 2 ms
+Cleaning stores took 0 ms
+Load screen analysis took 17 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms

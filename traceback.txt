@@ -1,0 +1,98 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/cholecystitis.rpy", line 128, in script
+    call screen bodywall_image_input
+  File "game/cholecystitis.rpy", line 132, in execute
+    screen bodywall_image_input():
+  File "game/cholecystitis.rpy", line 132, in execute
+    screen bodywall_image_input():
+  File "game/cholecystitis.rpy", line 134, in execute
+    frame:
+  File "game/cholecystitis.rpy", line 140, in execute
+    vbox:
+  File "game/cholecystitis.rpy", line 148, in execute
+    input:
+Exception: The 'temp_image_input' variable does not exist.
+
+-- Full Traceback ------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "game/cholecystitis.rpy", line 128, in script
+    call screen bodywall_image_input
+  File "renpy/ast.py", line 2231, in execute
+    self.call("execute")
+    ~~~~~~~~~^^^^^^^^^^^
+  File "renpy/ast.py", line 2195, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/statements.py", line 379, in call
+    return method(parsed, *args, **kwargs)
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/exports/statementexports.py", line 348, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ui.py", line 304, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/core.py", line 2219, in interact
+    repeat, rv = self.interact_core(
+                 ~~~~~~~~~~~~~~~~~~^
+        preloads=preloads,
+        ^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )  # type: ignore
+    ^                
+  File "renpy/display/core.py", line 2757, in interact_core
+    root_widget.visit_all(lambda d: d.per_interact())
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 432, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 432, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 432, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/screen.py", line 503, in visit_all
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "renpy/display/core.py", line 2757, in <lambda>
+    root_widget.visit_all(lambda d: d.per_interact())
+                                    ~~~~~~~~~~~~~~^^ 
+  File "renpy/display/screen.py", line 514, in per_interact
+    self.update()
+    ~~~~~~~~~~~^^
+  File "renpy/display/screen.py", line 715, in update
+    self.screen.function(**self.scope)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "game/cholecystitis.rpy", line 132, in execute
+    screen bodywall_image_input():
+  File "game/cholecystitis.rpy", line 132, in execute
+    screen bodywall_image_input():
+  File "game/cholecystitis.rpy", line 134, in execute
+    frame:
+  File "game/cholecystitis.rpy", line 140, in execute
+    vbox:
+  File "game/cholecystitis.rpy", line 148, in execute
+    input:
+  File "renpy/display/behavior.py", line 1444, in __init__
+    default = value.get_text()
+              ~~~~~~~~~~~~~~^^
+  File "renpy/common/00inputvalues.rpy", line 188, in get_text
+    return _get_field(self.object, self.field, self.kind)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/00action_data.rpy", line 36, in _get_field
+    raise Exception("The {!r} {} does not exist.".format(name, kind))
+Exception: The 'temp_image_input' variable does not exist.
+
+macOS-15.3.2-arm64-arm-64bit arm64
+Ren'Py 8.4.1.25072401
+Radiology Cases 1.0
+Mon Jul 28 17:26:33 2025

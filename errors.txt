@@ -1,0 +1,12 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+The label correct_bodywall_image is defined twice, at File "game/cholecystitis.rpy", line 228:
+label correct_bodywall_image:
+and File "game/cholecystitis.rpy", line 391:
+label correct_bodywall_image:
+
+
+Ren'Py Version: Ren'Py 8.4.1.25072401
+Tue Jul 29 17:30:15 2025
