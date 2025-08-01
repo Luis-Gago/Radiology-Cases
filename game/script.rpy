@@ -74,8 +74,10 @@ label start:
 
         "Emergency Cases":
             jump emergency_cases
-        "Breast Imaging":
-            jump breast_imaging
+        "About":
+            jump about
+        # "Breast Imaging":
+        #     jump breast_imaging
     
     return
 
@@ -88,8 +90,8 @@ label emergency_cases:
             jump appendicitis
         "Case 2" if cholecystitis_var == True:
             jump cholecystitis
-        "Case 3" if diverticulitis_var == True:
-            jump diverticulitis
+        # "Case 3" if diverticulitis_var == True:
+        #     jump diverticulitis
         "Main Menu":
             jump start
         "Citations":
@@ -98,7 +100,7 @@ label emergency_cases:
 label citations_emergency:
     scene bg readingroom
     l "Citations."
-    l "Case presented by Luis Gago, MS4 at Northwestern Feinberg School of Medicine"
+    l "Emergency Cases presented by Luis Gago, MS4 at Northwestern Feinberg School of Medicine"
     l "Information about windowing:  Zatz LM. Basic principles of computed tomography scanning. In: Newton TH, Potts DG, (Eds.). Technical Aspects of Computed Tomography. Mosby, St. Louis. 1981, pp. 3853-3876."
     l "Information about lung nodules: Ahn M, Gleeson T, Chan I et al. Perifissural Nodules Seen at CT Screening for Lung Cancer. Radiology. 2010;254(3):949-56. doi:10.1148/radiol.09090031"
     l "Information about Riedel lobe: Kudo M. Riedel's lobe of the liver and its clinical implication. Intern. Med. 2000;39 (2): 87-8."
@@ -107,16 +109,22 @@ label citations_emergency:
 
     jump start
 
-label breast_imaging:
-    # Menu for breast imaging case selection
-    menu:
-        "Welcome to Breast Imaging Case Simulator. \n Please select a case."
+label about:
+    scene bg readingroom
+    l "The Radiology Case Simulator was created by Luis Gago, an MS4 at Feinberg School of Medicine."
+    l "RCS was made using Ren'Py: https://www.renpy.org/ and is hosted on Github: https://github.com/."
+    l "You may view the source code here: https://github.com/Luis-Gago/Radiology-Cases/"
 
-        "Case 1":
-            jump breast_case_1
-        "Case 2":
-            jump breast_case_2
-        "Main Menu":
-            jump start
-        "Citations":
-            jump citations_breast
+# label breast_imaging:
+#     # Menu for breast imaging case selection
+#     menu:
+#         "Welcome to Breast Imaging Case Simulator. \n Please select a case."
+
+#         "Case 1":
+#             jump breast_case_1
+#         "Case 2":
+#             jump breast_case_2
+#         "Main Menu":
+#             jump start
+#         "Citations":
+#             jump citations_breast
