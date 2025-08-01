@@ -1,128 +1,26 @@
-2025-08-01 18:16:44 UTC
+2025-08-01 18:21:50 UTC
 macOS-15.3.2-arm64-arm-64bit
 Ren'Py 8.4.1.25072401
 
-Early init took 36 ms
-Loading error handling took 19 ms
-Loading script took 119 ms
-Loading save slot metadata took 16 ms
+Early init took 33 ms
+Loading error handling took 18 ms
+Loading script took 60 ms
+Loading save slot metadata took 14 ms
 Loading persistent took 0 ms
-Running init code took 35 ms
+Running init code took 34 ms
 Loading analysis data took 2 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 4 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 23 ms
+Reloading save slot metadata took 3 ms
+Dump and make backups took 20 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 20 ms
+Initial gc took 16 ms
 DPI scale factor: 1.000000
-Creating interface object took 1 ms
+Creating interface object took 0 ms
 Init translation took 1 ms
 Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 10 ms
-Save pyanalysis took 3 ms
-Save bytecode took 17 ms
-Running _start took 1 ms
-Interface start took 2999 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1470, 816) drawable=(2940, 1632)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1470, 816) drawable=(2940, 1632)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1470, 816) drawable=(2940, 1632)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1470, 816) drawable=(2940, 1632)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1470, 816) drawable=(1470, 816)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1296, 882) drawable=(1296, 882)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1214, 912) drawable=(1214, 912)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1145, 938) drawable=(1145, 938)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1091, 958) drawable=(1091, 958)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1050, 974) drawable=(1050, 974)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1020, 985) drawable=(1020, 985)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(998, 993) drawable=(998, 993)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(983, 999) drawable=(983, 999)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(972, 1003) drawable=(972, 1003)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(965, 1006) drawable=(965, 1006)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(959, 1007) drawable=(959, 1007)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(956, 1009) drawable=(956, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(953, 1010) drawable=(953, 1010)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(952, 1010) drawable=(952, 1010)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(951, 1011) drawable=(951, 1011)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(950, 1011) drawable=(950, 1011)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(949, 1011) drawable=(949, 1011)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1086, 960) drawable=(1086, 960)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1172, 928) drawable=(1172, 928)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1247, 900) drawable=(1247, 900)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1307, 878) drawable=(1307, 878)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1353, 860) drawable=(1353, 860)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1387, 848) drawable=(1387, 848)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1412, 838) drawable=(1412, 838)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1430, 832) drawable=(1430, 832)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1443, 827) drawable=(1443, 827)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1452, 824) drawable=(1452, 824)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1458, 821) drawable=(1458, 821)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1462, 820) drawable=(1462, 820)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1465, 819) drawable=(1465, 819)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1467, 818) drawable=(1467, 818)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1468, 817) drawable=(1468, 817)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1469, 817) drawable=(1469, 817)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1470, 817) drawable=(1470, 817)
-Maximum texture size: 4096x4096
-Cleaning stores took 0 ms
-Load screen analysis took 23 ms
+Load screen analysis took 9 ms
 Analyze screens took 0 ms
-Running _start took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 23 ms
-Analyze screens took 0 ms
-Running _start took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 20 ms
-Analyze screens took 0 ms
-Running _start took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
