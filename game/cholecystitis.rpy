@@ -1,15 +1,66 @@
 # Default store variables
 default bodywall_images = 0
 default chest_images = 0
-default temp_image_input = ""
+default gallbladder_images = 0
+default temp_image_input_bodywall = ""
+default temp_image_input_chest = ""
+default temp_image_input_gallbladder = ""
 
+# Gallbladder image selection state
+default selected_gallbladder = False
+default selected_fatstranding = False
 
-# Python functions for this script
-python:
-    def restart_with_score_update(score_var, score_change, total_var, total_calc):
-        renpy.store[score_var] += score_change
-        renpy.store[total_var] = total_calc
-        renpy.restart_interaction()
+init python:
+    def validate_bodywall_input():
+        txt = store.temp_image_input_bodywall.strip()
+        if not txt:
+            renpy.notify("Please enter a number.")
+            return False
+        try:
+            num = int(txt)
+        except ValueError:
+            renpy.notify("Please enter a valid integer.")
+            return False
+        if 1 <= num <= 93:
+            store.bodywall_images = num
+            return True
+        else:
+            renpy.notify("Please enter a number between 1 and 93.")
+            return False
+
+    def validate_chest_input():
+        txt = store.temp_image_input_chest.strip() if store.temp_image_input_chest else ""
+        if not txt:
+            renpy.notify("Please enter a number.")
+            return False
+        try:
+            num = int(txt)
+        except ValueError:
+            renpy.notify("Please enter a valid integer.")
+            return False
+        if 94 <= num <= 253:
+            store.chest_images = num
+            return True
+        else:
+            renpy.notify("Please enter a number between 94 and 253.")
+            return False
+
+    def validate_gallbladder_input():
+        txt = store.temp_image_input_gallbladder.strip() if store.temp_image_input_gallbladder else ""
+        if not txt:
+            renpy.notify("Please enter a number.")
+            return False
+        try:
+            num = int(txt)
+        except ValueError:
+            renpy.notify("Please enter a valid integer.")
+            return False
+        if 1 <= num <= 93:
+            store.gallbladder_images = num
+            return True
+        else:
+            renpy.notify("Please enter a number between 1 and 93.")
+            return False
 
 label cholecystitis:
 
@@ -117,54 +168,18 @@ label bodywall_chole:
         a "Incorrect. The body wall has a benign finding, but you reported: [player_answers_chole['bodywall']]"
     a "Can you see the benign finding in the body wall on the CT images?"
     a "Which images show the benign finding in the body wall?"
-
-    call screen bodywall_image_input
-
+    
+    jump bodywall_image_input
+    
+label bodywall_image_input:
+    $ temp_image_input_bodywall = renpy.input("Enter a single image number (1–93) that shows the benign finding in the body wall:", length=2, allow="0123456789")
+    $ temp_image_input_bodywall = temp_image_input_bodywall.strip()
+    if not validate_bodywall_input():
+        a "Invalid input. Please try again."
+        jump bodywall_image_input
     jump bodywall_image_selection
 
-screen bodywall_image_input():
-    frame:
-        xalign 0.9
-        yalign 0.5
-        xsize 600
-        ysize 300
-        
-        vbox:
-            spacing 20
-            xalign 0.5
-            yalign 0.5
-            
-            text "Enter a single image number (1-93) that shows the benign finding in the body wall in the axial images:" xalign 0.5
-            
-            input:
-                value VariableInputValue("temp_image_input")
-                length 2
-                allow "0123456789"
-                xalign 0.5
-                
-            hbox:
-                spacing 20
-                xalign 0.5
-                
-                textbutton "Submit":
-                    action [Function(validate_bodywall_input), Return()]
-                    
-                textbutton "Cancel":
-                    action Return()
 
-init python:
-    def validate_bodywall_input():
-        try:
-            num = int(store.temp_image_input.strip())
-            if 1 <= num <= 93:
-                store.bodywall_images = num
-                return True  # Return True if valid
-            else:
-                renpy.notify("Please enter a number between 1 and 93.")
-                return False  # Return False if invalid
-        except (ValueError, AttributeError):
-            renpy.notify("Please enter a valid number.")
-            return False
 
 label bodywall_image_selection:
     scene bg readingroom
@@ -281,71 +296,134 @@ label chest_chole:
     a "You reported the Chest as: [player_answers_chole['chest']]"
     if player_answers_chole["chest"] == correct_answers_chole["chest"]:
         a "Correct, there is a benign finding in the chest."
+        a "Can you identify for me which coronal images detail the benign chest finding?"
     else:
         a "Incorrect. The chest has a benign finding, but you reported: [player_answers_chole['chest']]"
-        a "Can you identify for me which axial images detail the benign chest finding?"
+        a "Can you identify for me which coronal images detail the benign chest finding?"
+    
+    jump chest_image_input
 
-screen chest_image_input():
-    frame:
-        xalign 0.9
-        yalign 0.5
-        xsize 600
-        ysize 300
-        
-        vbox:
-            spacing 20
-            xalign 0.5
-            yalign 0.5
-            
-            text "Enter a single image number (1-) that shows the benign finding in the chest in the axial images:" xalign 0.5
-            
-            input:
-                value VariableInputValue("temp_image_input")
-                length 2
-                allow "0123456789"
-                xalign 0.5
-                
-            hbox:
-                spacing 20
-                xalign 0.5
-                
-                textbutton "Submit":
-                    action [Function(validate_chest_input), Return()]
+label chest_image_input:
+    $ temp_image_input_chest = renpy.input("Enter a single image number (94-253) that shows the benign finding in the chest in the coronal images:", length=3, allow="0123456789")
+    $ temp_image_input_chest = temp_image_input_chest.strip()
+    if not validate_chest_input():
+        a "Invalid input. Please try again."
+        jump chest_image_input
+    jump chest_image_selection
+
+
                     
-                textbutton "Cancel":
-                    action Return()
-
-init python:
-    def validate_chest_input():
-        try:
-            num = int(store.temp_image_input.strip())
-            if 1 <= num <= 93:
-                store.chest_images = num
-                return True  # Return True if valid
-            else:
-                renpy.notify("Please enter a number between 1 and 93.")
-                return False  # Return False if invalid
-        except (ValueError, AttributeError):
-            renpy.notify("Please enter a valid number.")
-            return False
 
 label chest_image_selection:
     scene bg readingroom
     a "You selected image number [store.chest_images] for the benign finding in the body wall."
-    if store.chest_images in [50, 51, 52]:
-        a "Correct, the relevant axial images are , , or . Can you select the area on the axial image that shows the benign finding?"
+    if store.chest_images in range(155, 201):
+        a "Correct, the finding is visible between images 155 and 200."
+        a "What finding is visible in these images?"
         $ chole_score += 1
         $ total_score = appy_score + chole_score + div_score
-        call screen chest_image_minigame
+        call screen chest_menu_chole
     else:
-        a "Incorrect. The benign finding in the chest is not in axial image number [store.chest_images]."
-        a "The correct axial images are , , and ."
-        a "On the following image can you click on the area that shows the benign finding in the chest?"
+        a "Incorrect. The benign finding in the chest is not in coronal image number [store.chest_images]."
+        a "The correct images are those between 155 and 200"
+        a "What finding is visible in these images?"
         $ chole_score -= 1
         $ total_score = appy_score + chole_score + div_score
-        call screen chest_image_minigame
+        call screen chest_menu_chole
 
-screen chest_image_minigame():
+screen chest_menu_chole:
+    frame:
+        xalign 1.0
+        yalign 0.2
+        xsize 700  # Set a fixed width for a more vertical look
+        ypadding 40
+        vbox:
+            spacing 20  # Adds space between buttons
+            text "Select the finding visible in the chest in image 155-200." xalign 0.5
+            textbutton "0.2cm pulmonary nodule in the lower right lobe" action Jump("chest_incorrect_chole") xalign 0.5
+            textbutton "Small left pneumothorax" action Jump("chest_incorrect_chole") xalign 0.5
+            if can_move_to_liver_chole == False:
+                textbutton "Subsegmental atelectasis in the lower lobes" action [SetVariable("chole_score", chole_score + 1), Jump("chest_atelectasis_chole")] xalign 0.5
+            textbutton "Cardiomegaly" action Jump("chest_incorrect_chole") xalign 0.5
+            if can_move_to_liver_chole:
+                textbutton "Move to Liver Report" action Jump("liver_chole") xalign 0.5 text_color "#FFD600"
+
+label chest_atelectasis_chole:
+    $ total_score = appy_score + chole_score + div_score
+    $ can_move_to_liver_chole = True
+    image chole chest atelectasis = "chole/chole_atelectasis@2.png"  # Ensure the image is defined
+    image chole chest example = "chole/chole_chest_example.jpg"  # Ensure the image is defined
+    scene bg readingroom
+    show chole chest atelectasis at right_middle
+    a "Correct, there is subsegmental atelectasis in the lower lobes."
+    a "Subsegmental atelectasis occurs when a small part of the lung is airless and collapsed."
+    a "Subsegmental atelectasis can occur due to shallow breathing, cough suppression, compression of the lung, or a blocked airway."
+    hide chole chest atelectasis
+    show chole chest example at right_middle
+    a "Here is an example of right middle lobe atelectasis on a CT scan."
+    a "This image shows anterior displacement of the major fissure (arrow) and crowding of bronchi in the opacified segment of right middle lobe."
+    hide chole chest example
+
+    call screen chest_menu_chole
+
+label chest_incorrect_chole:
+    scene bg readingroom
+    a "Incorrect. This is not a finding in the chest."
+    $ appy_score -= 1
+    $ total_score = appy_score + chole_score + div_score
+
+    call screen chest_menu_chole
+
+label liver_chole:
+    $ total_score = appy_score + chole_score + div_score
+    scene bg readingroom
+    a "Now, let's review the liver findings."
+    a "You reported the Liver as: [player_answers_chole['liver']]"
+    if player_answers_chole["liver"] == correct_answers_chole["liver"]:
+        a "Correct, the liver is normal."
+    else:
+        a "Incorrect. The liver is normal, but you reported: [player_answers_chole['liver']]"
+
+    jump gallbladder_chole
+
+label gallbladder_chole:
+    scene bg readingroom
+    a "Now, let's look at the gallbladder findings."
+    a "You reported the Gallbladder as: [player_answers_chole['gallbladder']]"
+    if player_answers_chole["gallbladder"] == correct_answers_chole["gallbladder"]:
+        a "Correct, there is a pathological finding in the gallbladder."
+    else:
+        a "Incorrect. The gallbladder has a pathological finding, but you reported: [player_answers_chole['gallbladder']]"
+        a "Enter an image number that shows the pathological finding in the gallbladder in the axial images."
+
+    jump gallbladder_image_input
+
+label gallbladder_image_input:
+    $ temp_image_input_gallbladder = renpy.input("Enter a single image number (1-93) that shows the pathological finding in the gallbladder in the axial images:", length=2, allow="0123456789")
+    $ temp_image_input_gallbladder = temp_image_input_gallbladder.strip()
+    if not validate_gallbladder_input():
+        a "Invalid input. Please try again."
+        jump gallbladder_image_input
+    jump gallbladder_image_selection
+
+label gallbladder_image_selection:
+    scene bg readingroom
+    a "You selected image number [store.gallbladder_images] for the pathologic finding in the gallbladder."
+    if store.gallbladder_images in range(30, 40):
+        a "Correct, the finding is visible between images 30 and 40."
+        a "Can you identify the pathology?"
+        $ chole_score += 1
+        $ total_score = appy_score + chole_score + div_score
+        call screen gallbladder_image_minigame
+    else:
+        a "Incorrect. The pathologic finding in the chest is not in axial image number [store.gallbladder_images]."
+        a "The correct images are those between 30 and 40"
+        a "Can you identify the pathology?"
+        $ chole_score -= 1
+        $ total_score = appy_score + chole_score + div_score
+        call screen gallbladder_image_minigame
+
+screen gallbladder_image_minigame():
     default error_message = ""
     default screen_tooltip = ""
     zorder 100
@@ -355,16 +433,33 @@ screen chest_image_minigame():
         xsize 550
         ysize 600
 
-        add "chole/ct_umbilical_hernia.png"
+        add "chole/gallbladder.png"
         modal True
 
-        imagebutton auto "chole/ct_umbilical_hernia_fat_%s.png":
-            focus_mask True
-            hovered SetScreenVariable("screen_tooltip", "Click to select.")
-            unhovered SetScreenVariable("screen_tooltip", "")
-            action Jump("correct_bodywall_image")
+        # Gallbladder button
+        if not selected_gallbladder:
+            imagebutton auto "chole/gallbladder_gallbladder_%s.png":
+                focus_mask True
+                hovered SetScreenVariable("screen_tooltip", "Click to select.")
+                unhovered SetScreenVariable("screen_tooltip", "")
+                action [
+                    SetScreenVariable("selected_gallbladder", True),
+                    Jump("correct_gallbladder_gallbladder_image")
+                ]
 
-        imagebutton auto "chole/ct_umbilical_hernia_inc1_%s.png":
+        # Fat stranding button
+        if not selected_fatstranding:
+            imagebutton auto "chole/gallbladder_fatstranding_%s.png":
+                focus_mask True
+                hovered SetScreenVariable("screen_tooltip", "Click to select.")
+                unhovered SetScreenVariable("screen_tooltip", "")
+                action [
+                    SetScreenVariable("selected_fatstranding", True),
+                    Jump("correct_gallbladder_fatstranding_image")
+                ]
+
+        # Incorrect buttons
+        imagebutton auto "chole/gallbladder_liver_%s.png":
             focus_mask True
             hovered SetScreenVariable("screen_tooltip", "Click to select.")
             unhovered SetScreenVariable("screen_tooltip", "")
@@ -375,7 +470,7 @@ screen chest_image_minigame():
                 Function(renpy.restart_interaction),
             ]
 
-        imagebutton auto "chole/ct_umbilical_hernia_inc2_%s.png":
+        imagebutton auto "chole/gallbladder_pancreas_%s.png":
             focus_mask True
             hovered SetScreenVariable("screen_tooltip", "Click to select.")
             unhovered SetScreenVariable("screen_tooltip", "")
@@ -392,11 +487,39 @@ screen chest_image_minigame():
 
         if screen_tooltip:
             text "[screen_tooltip]" color "#fff" xalign 0.5 yalign 0.98
-        
-label correct_chest_image:
+
+        # Show continue only after both correct have been selected
+        if selected_gallbladder and selected_fatstranding:
+            textbutton "Continue" action Jump("after_gallbladder_minigame") xalign 0.5 yalign 0.95
+
+label correct_gallbladder_gallbladder_image:
     scene bg readingroom
     $ chole_score += 1
     $ total_score = appy_score + chole_score + div_score
-    a "Great job! You selected the correct area showing the benign finding in the chest"
-    call screen fat_hernia_menu
-    jump chest_chole
+    $ selected_gallbladder = True
+    a "Great job! You selected the correct area showing the pathological finding in the gallbladder."
+    # Return to minigame for fatstranding
+    if not selected_fatstranding:
+        call screen gallbladder_image_minigame
+    else:
+        jump after_gallbladder_minigame
+
+label correct_gallbladder_fatstranding_image:
+    scene bg readingroom
+    $ chole_score += 1
+    $ total_score = appy_score + chole_score + div_score
+    $ selected_fatstranding = True
+    a "Excellent! You identified the fat stranding."
+    # Return to minigame for gallbladder if not already selected
+    if not selected_gallbladder:
+        call screen gallbladder_image_minigame
+    else:
+        jump after_gallbladder_minigame
+
+label after_gallbladder_minigame:
+    a "You have successfully identified the pathological finding in the gallbladder."
+    a "What is the pathology you just selected?"
+    # Continue your flow here
+    call screen cholecystitis_menu
+    jump pancreas_chole
+

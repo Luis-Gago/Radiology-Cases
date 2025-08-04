@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 7: invalid syntax. Perhaps you forgot a comma?
-    Character("Luis Gago", image="LuisGago" color="#c70909c1")
-                                 ^^^^^^^^^^^^^^^^
+File "game/cholecystitis.rpy", line 473: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    xalign 0.5
+    ^
 
 Ren'Py Version: Ren'Py 8.4.1.25072401
-Thu Jul 31 13:35:53 2025
+Sun Aug  3 22:41:48 2025

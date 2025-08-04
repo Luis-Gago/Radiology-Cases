@@ -74,6 +74,12 @@ init python:
     # Global cache for DICOM images - shared across all cases
     dicom_cache = DICOMSlidingCache(window_size=20)
 
+    # Function to restart the game with updated scores
+    # def restart_with_score_update(score_var, score_change, total_var, total_calc):
+    #     renpy.store[score_var] += score_change
+    #     renpy.store[total_var] = total_calc
+    #     renpy.restart_interaction()
+
 
 # DICOM Viewer screen
 screen DICOMViewer(images, image_sets=None, current_set=0, set_names=None):
