@@ -1,31 +1,31 @@
-2025-08-04 17:23:41 UTC
+2025-08-07 16:50:47 UTC
 macOS-15.3.2-arm64-arm-64bit
 Ren'Py 8.4.1.25072401
 
-Early init took 57 ms
-Loading error handling took 41 ms
-Loading script took 712 ms
-Loading save slot metadata took 26 ms
+Early init took 49 ms
+Loading error handling took 18 ms
+Loading script took 61 ms
+Loading save slot metadata took 14 ms
 Loading persistent took 0 ms
-Running init code took 79 ms
-Loading analysis data took 3 ms
+Running init code took 34 ms
+Loading analysis data took 2 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 6 ms
-Dump and make backups took 36 ms
+Reloading save slot metadata took 4 ms
+Dump and make backups took 20 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 27 ms
+Initial gc took 16 ms
 DPI scale factor: 1.000000
-Creating interface object took 1 ms
-Init translation took 2 ms
+Creating interface object took 0 ms
+Init translation took 1 ms
 Cleaning stores took 0 ms
-Load screen analysis took 16 ms
-Analyze screens took 1 ms
+Load screen analysis took 9 ms
+Analyze screens took 0 ms
 Save screen analysis took 0 ms
 Save pyanalysis took 0 ms
-Save bytecode took 27 ms
-Running _start took 1 ms
-Interface start took 1005 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 337 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1470, 956)
@@ -39,7 +39,7 @@ Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
 Maximum texture size: 4096x4096
 
 Full traceback:
-  File "game/cholecystitis.rpy", line 523, in script
+  File "game/cholecystitis.rpy", line 605, in script
     call screen cholecystitis_menu
   File "renpy/ast.py", line 2231, in execute
     self.call("execute")
@@ -61,6 +61,6 @@ Full traceback:
 renpy.display.screen.ScreenNotFound: Screen 'cholecystitis_menu' is not known.
 
 While running game code:
-  File "game/cholecystitis.rpy", line 523, in script
+  File "game/cholecystitis.rpy", line 605, in script
     call screen cholecystitis_menu
 renpy.display.screen.ScreenNotFound: Screen 'cholecystitis_menu' is not known.

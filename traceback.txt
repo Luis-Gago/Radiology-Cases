@@ -1,14 +1,14 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/cholecystitis.rpy", line 523, in script
+  File "game/cholecystitis.rpy", line 605, in script
     call screen cholecystitis_menu
 renpy.display.screen.ScreenNotFound: Screen 'cholecystitis_menu' is not known.
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/cholecystitis.rpy", line 523, in script
+  File "game/cholecystitis.rpy", line 605, in script
     call screen cholecystitis_menu
   File "renpy/ast.py", line 2231, in execute
     self.call("execute")
@@ -32,4 +32,4 @@ renpy.display.screen.ScreenNotFound: Screen 'cholecystitis_menu' is not known.
 macOS-15.3.2-arm64-arm-64bit arm64
 Ren'Py 8.4.1.25072401
 Radiology Cases 1.0
-Mon Aug  4 12:26:27 2025
+Thu Aug  7 11:54:36 2025

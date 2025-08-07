@@ -72,6 +72,9 @@ label cholecystitis:
     $ can_move_to_chest_chole = False
     $ can_move_to_diagnosis_chole = False
 
+    $ can_move_to_gallbladder_gallbladder_correct_menu = False
+    $ can_move_to_gallbladder_fatstranding_correct_menu = False
+
     scene bg readingroom
     a "You have selected Case Two."
     a "A patient has been brought into the ED and has been scanned with \"the tube of truth\" aka the CT scanner."
@@ -493,33 +496,132 @@ screen gallbladder_image_minigame():
             textbutton "Continue" action Jump("after_gallbladder_minigame") xalign 0.5 yalign 0.95
 
 label correct_gallbladder_gallbladder_image:
+    hide screen gallbladder_image_minigame
     scene bg readingroom
     $ chole_score += 1
     $ total_score = appy_score + chole_score + div_score
     $ selected_gallbladder = True
-    a "Great job! You selected the correct area showing the pathological finding in the gallbladder."
+    a "Great job! Can you identify what you just selected?"
+    call screen gallbladder_gallbladder_menu
     # Return to minigame for fatstranding
     if not selected_fatstranding:
         call screen gallbladder_image_minigame
     else:
         jump after_gallbladder_minigame
 
+screen gallbladder_gallbladder_menu():
+    frame:
+        xalign 1.0
+        yalign 0.2
+        xsize 700  # Set a fixed width for a more vertical look
+        ypadding 40
+        vbox:
+            spacing 20  # Adds space between buttons
+            text "What is the finding that you just selected?" xalign 0.5
+            textbutton "Gallstones causing obstruction of the common bile duct" action Jump("gallbladder_gallbladder_incorrect") xalign 0.5
+            textbutton "A 2.5 cm gallbladder mass" action Jump("gallbladder_gallbladder_incorrect") xalign 0.5
+            textbutton "Porcelain gallbladder" action Jump("gallbladder_gallbladder_incorrect") xalign 0.5
+            if can_move_to_gallbladder_gallbladder_correct_menu == False:
+                textbutton "Mild gallbladder distention and wall thickening" action [SetVariable("chole_score", chole_score + 1), Jump("gallbladder_gallbladder_correct_menu")] xalign 0.5
+            if can_move_to_gallbladder_gallbladder_correct_menu:
+                textbutton "Return" action [Hide("gallbladder_gallbladder_menu"), Show("gallbladder_image_minigame")] xalign 0.5 text_color "#FFD600"
+
+label gallbladder_gallbladder_incorrect:
+    scene bg readingroom    
+    a "Incorrect. This is not a finding in the gallbladder."
+    $ chole_score -= 1
+    $ total_score = appy_score + chole_score + div_score
+    call screen gallbladder_gallbladder_menu
+
+label gallbladder_gallbladder_correct_menu:
+    $ total_score = appy_score + chole_score + div_score
+    $ can_move_to_gallbladder_gallbladder_correct_menu = True
+    scene bg readingroom    
+    image chole gallbladder distention transverse = "chole/gallbladder_distention_transverse_arrow@2.png"
+    image chole gallbladder distention longitudinal = "chole/gallbladder_distention_longitudinal_arrow@2.png"
+    show chole gallbladder distention transverse at right_middle
+    a "Correct, the gallbladder is mildly distended."
+    a "The gallbladder is mildly distended in this case, as it is larger than 4 cm in in a transverse measurement..."
+    hide chole gallbladder distention transverse
+    show chole gallbladder distention longitudinal at right_middle
+    a "...and 9 cm in a longitudinal measurement."
+    hide chole gallbladder distention longitudinal
+    call screen gallbladder_gallbladder_menu
+
 label correct_gallbladder_fatstranding_image:
+    hide screen gallbladder_image_minigame
     scene bg readingroom
     $ chole_score += 1
     $ total_score = appy_score + chole_score + div_score
     $ selected_fatstranding = True
-    a "Excellent! You identified the fat stranding."
+    a "Excellent! Can you identify what you just selected?"
+    call screen gallbladder_fatstranding_menu
     # Return to minigame for gallbladder if not already selected
     if not selected_gallbladder:
         call screen gallbladder_image_minigame
     else:
         jump after_gallbladder_minigame
 
+screen gallbladder_fatstranding_menu():
+    frame:
+        xalign 1.0
+        yalign 0.2
+        xsize 700  # Set a fixed width for a more vertical look
+        ypadding 40
+        vbox:
+            spacing 20  # Adds space between buttons
+            text "What is the finding that you just selected?" xalign 0.5
+            textbutton "Biliary sludge" action Jump("gallbladder_fatstranding_incorrect") xalign 0.5
+            textbutton "Inflammatory gallbladder polyps" action Jump("gallbladder_fatstranding_incorrect") xalign 0.5
+            textbutton "Adenomyomatosis of the gallbladder" action Jump("gallbladder_fatstranding_incorrect") xalign 0.5
+            if can_move_to_gallbladder_fatstranding_correct_menu == False:
+                textbutton "Pericholecystic fluid and adjacent stranding" action [SetVariable("chole_score", chole_score + 1), Jump("gallbladder_fatstranding_correct_menu")] xalign 0.5
+            if can_move_to_gallbladder_fatstranding_correct_menu:
+                textbutton "Return" action [Hide("gallbladder_fatstranding_menu"), Show("gallbladder_image_minigame")] xalign 0.5 text_color "#FFD600"
+
+label gallbladder_fatstranding_incorrect:
+    scene bg readingroom
+    a "Incorrect. This is not a finding in the gallbladder."
+    $ chole_score -= 1
+    $ total_score = appy_score + chole_score + div_score
+    call screen gallbladder_fatstranding_menu
+
+label gallbladder_fatstranding_correct_menu:
+    $ total_score = appy_score + chole_score + div_score
+    $ can_move_to_gallbladder_fatstranding_correct_menu = True
+    scene bg readingroom
+    image chole gallbladder fatstranding = "chole/gallbladder_fatstranding_arrow@2.png"
+    show chole gallbladder fatstranding at right_middle
+    a "Correct, there is fat stranding around the gallbladder."
+    a "Fat stranding is a common finding in acute cholecystitis and indicates inflammation in the surrounding tissues."
+    a "It is often seen as a haziness or increased density around the gallbladder on CT images."
+    hide chole gallbladder fatstranding
+    call screen gallbladder_fatstranding_menu
+
 label after_gallbladder_minigame:
-    a "You have successfully identified the pathological finding in the gallbladder."
-    a "What is the pathology you just selected?"
+    hide screen gallbladder_image_minigame
+    a "You have successfully identified both of the pathological findings in the gallbladder."
     # Continue your flow here
-    call screen cholecystitis_menu
     jump pancreas_chole
 
+label pancreas_chole:
+    $ total_score = appy_score + chole_score + div_score
+    scene bg readingroom
+    a "Now, let's review the pancreas findings."
+    a "You reported the Pancreas as: [player_answers_chole['pancreas']]"
+    if player_answers_chole["pancreas"] == correct_answers_chole["pancreas"]:
+        a "Correct, the pancreas is normal."
+    else:
+        a "Incorrect. The pancreas is normal, but you reported: [player_answers_chole['pancreas']]"
+
+    jump kidneys_chole
+
+label kidneys_chole:
+    scene bg readingroom
+    a "Now, let's review the kidney findings."
+    a "You reported the Kidneys as: [player_answers_chole['kidney']]"
+    if player_answers_chole["kidney"] == correct_answers_chole["kidney"]:
+        a "Correct, the kidneys have a benign finding."
+    else:
+        a "Incorrect. The kidneys have a benign finding, but you reported: [player_answers_chole['kidney']]"
+    

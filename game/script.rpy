@@ -99,20 +99,14 @@ label emergency_cases:
 
 label citations_emergency:
     scene bg readingroom
-    l "Citations."
+    l "Citations for Emergency Cases:"
     l "Emergency Cases presented by Luis Gago, MS4 at Northwestern Feinberg School of Medicine"
-    l "Information about windowing:  Zatz LM. Basic principles of computed tomography scanning. In: Newton TH, Potts DG, (Eds.). Technical Aspects of Computed Tomography. Mosby, St. Louis. 1981, pp. 3853-3876."
-    l "Information about lung nodules: Ahn M, Gleeson T, Chan I et al. Perifissural Nodules Seen at CT Screening for Lung Cancer. Radiology. 2010;254(3):949-56. doi:10.1148/radiol.09090031"
-    l "Information about Riedel lobe: Kudo M. Riedel's lobe of the liver and its clinical implication. Intern. Med. 2000;39 (2): 87-8."
-    l "Information about appendicitis: Byas Deb Ghosh. Human Anatomy for Students. (2007) ISBN: 9788180618666"
-    l "Liver Lesion ACR Criteria: https://acsearch.acr.org/docs/69472/Narrative"
-
     jump start
 
 label about:
     scene bg readingroom
     l "The Radiology Case Simulator was created by Luis Gago, an MS4 at Feinberg School of Medicine."
-    l "RCS was made using Ren'Py: https://www.renpy.org/ and is hosted on Github: https://github.com/."
+    l "RCS was made using Ren'Py: https://www.renpy.org/ and is hosted on Github: https://github.com/"
     l "You may view the source code here: https://github.com/Luis-Gago/Radiology-Cases/"
 
 # label breast_imaging:
