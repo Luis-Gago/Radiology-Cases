@@ -2,9 +2,11 @@
 default bodywall_images = 0
 default chest_images = 0
 default gallbladder_images = 0
+default kidney_images = 0
 default temp_image_input_bodywall = ""
 default temp_image_input_chest = ""
 default temp_image_input_gallbladder = ""
+default temp_image_input_kidney = ""
 
 # Gallbladder image selection state
 default selected_gallbladder = False
@@ -62,6 +64,23 @@ init python:
             renpy.notify("Please enter a number between 1 and 93.")
             return False
 
+    def validate_kidney_input():
+        txt = store.temp_image_input_kidney.strip() if store.temp_image_input_kidney else ""
+        if not txt:
+            renpy.notify("Please enter a number.")
+            return False
+        try:
+            num = int(txt)
+        except ValueError:
+            renpy.notify("Please enter a valid integer.")
+            return False
+        if 94 <= num <= 253:
+            store.kidney_images = num
+            return True
+        else:
+            renpy.notify("Please enter a number between 94 and 253.")
+            return False
+
 label cholecystitis:
 
     #Variables for hidden answers
@@ -74,6 +93,8 @@ label cholecystitis:
 
     $ can_move_to_gallbladder_gallbladder_correct_menu = False
     $ can_move_to_gallbladder_fatstranding_correct_menu = False
+    $ can_move_to_kidney_stone_menu = False
+    $ can_move_to_kidney_nephrograms_menu = False
 
     scene bg readingroom
     a "You have selected Case Two."
@@ -175,14 +196,12 @@ label bodywall_chole:
     jump bodywall_image_input
     
 label bodywall_image_input:
-    $ temp_image_input_bodywall = renpy.input("Enter a single image number (1–93) that shows the benign finding in the body wall:", length=2, allow="0123456789")
+    $ temp_image_input_bodywall = renpy.input("Enter a single axial image number (1–93) that shows the benign finding in the body wall:", length=2, allow="0123456789")
     $ temp_image_input_bodywall = temp_image_input_bodywall.strip()
     if not validate_bodywall_input():
         a "Invalid input. Please try again."
         jump bodywall_image_input
     jump bodywall_image_selection
-
-
 
 label bodywall_image_selection:
     scene bg readingroom
@@ -287,7 +306,7 @@ label fat_hernia_correct:
 label fat_hernia_incorrect:
     scene bg readingroom
     a "Incorrect. This is not a finding in the bodywall."
-    $ appy_score -= 1
+    $ chole_score -= 1
     $ total_score = appy_score + chole_score + div_score
 
     call screen fat_hernia_menu
@@ -313,10 +332,7 @@ label chest_image_input:
         a "Invalid input. Please try again."
         jump chest_image_input
     jump chest_image_selection
-
-
                     
-
 label chest_image_selection:
     scene bg readingroom
     a "You selected image number [store.chest_images] for the benign finding in the body wall."
@@ -372,7 +388,7 @@ label chest_atelectasis_chole:
 label chest_incorrect_chole:
     scene bg readingroom
     a "Incorrect. This is not a finding in the chest."
-    $ appy_score -= 1
+    $ chole_score -= 1
     $ total_score = appy_score + chole_score + div_score
 
     call screen chest_menu_chole
@@ -395,9 +411,10 @@ label gallbladder_chole:
     a "You reported the Gallbladder as: [player_answers_chole['gallbladder']]"
     if player_answers_chole["gallbladder"] == correct_answers_chole["gallbladder"]:
         a "Correct, there is a pathological finding in the gallbladder."
+        
     else:
         a "Incorrect. The gallbladder has a pathological finding, but you reported: [player_answers_chole['gallbladder']]"
-        a "Enter an image number that shows the pathological finding in the gallbladder in the axial images."
+    a "Enter an image number that shows the pathological finding in the gallbladder in the axial images."
 
     jump gallbladder_image_input
 
@@ -621,7 +638,102 @@ label kidneys_chole:
     a "Now, let's review the kidney findings."
     a "You reported the Kidneys as: [player_answers_chole['kidney']]"
     if player_answers_chole["kidney"] == correct_answers_chole["kidney"]:
-        a "Correct, the kidneys have a benign finding."
+        a "Correct, the kidneys have benign findings."
     else:
-        a "Incorrect. The kidneys have a benign finding, but you reported: [player_answers_chole['kidney']]"
-    
+        a "Incorrect. The kidneys have benign findings, but you reported: [player_answers_chole['kidney']]"
+    call screen kidney_benign_menu
+
+screen kidney_benign_menu():
+    frame:
+        xalign 1.0
+        yalign 0.2
+        xsize 700  # Set a fixed width for a more vertical look
+        ypadding 40
+        vbox:
+            spacing 20  # Adds space between buttons
+            text "What are the two benign findings in the kidney?" xalign 0.5
+            textbutton "Bilateral hydronephrosis" action Jump("kidney_benign_incorrect") xalign 0.5
+            if can_move_to_kidney_stone_menu == False:
+                textbutton "Punctate calcification" action [SetVariable("chole_score", chole_score + 1), Jump("kidney_image_input_stone")] xalign 0.5
+            textbutton "Calyceal Diverticula" action Jump("kidney_benign_incorrect") xalign 0.5
+            textbutton "Simple Renal Cyst" action Jump("kidney_benign_incorrect") xalign 0.5
+            if can_move_to_kidney_nephrograms_menu == False:
+                textbutton "Bilateral symmetric nephrograms" action [SetVariable("chole_score", chole_score + 1), Jump("kidney_image_input_nephrograms")] xalign 0.5
+            if can_move_to_kidney_nephrograms_menu and can_move_to_kidney_stone_menu:
+                textbutton "Continue" action Jump("GI_Chole") xalign 0.5 text_color "#FFD600"
+
+label kidney_benign_incorrect:
+    scene bg readingroom
+    a "Incorrect. This is not a finding in the kidney."
+    $ chole_score -= 1
+    $ total_score = appy_score + chole_score + div_score
+
+    call screen kidney_benign_menu
+
+label kidney_image_input_stone:
+    $ can_move_to_kidney_stone_menu = True
+    a "Correct, there is a punctate calcification visible on the CT scan."
+    $ temp_image_input_kidney = renpy.input("Enter a single coronal image number (94-253) that shows the punctate calcification:", length=3, allow="0123456789")
+    $ temp_image_input_kidney = temp_image_input_kidney.strip()
+    if not validate_kidney_input():
+        a "Invalid input. Please try again."
+        jump kidney_image_input_stone
+    jump kidney_image_selection_stone
+
+label kidney_image_selection_stone:
+    scene bg readingroom
+    a "You selected image number [store.kidney_images] for the punctate calcification."
+    if store.kidney_images in range(187, 189):
+        a "Correct, the punctate calcification is visible in images 187 and 188."
+        $ chole_score += 1
+        $ total_score = appy_score + chole_score + div_score
+    else:
+        a "Incorrect. punctate calcification is not in axial image number [store.kidney_images]."
+        a "The correct images are 187 and 188"
+        $ chole_score -= 1
+        $ total_score = appy_score + chole_score + div_score
+    image kidney stone = "chole/kidneystone_chole@2.png"
+    show kidney stone at right_middle
+    a "There is a punctate calcification in the left lower pole, which most likely represents a nonobstructing renal stone."
+    hide kidney stone
+    call screen kidney_benign_menu
+
+label kidney_image_input_nephrograms:
+    $ can_move_to_kidney_nephrograms_menu = True
+    a "Correct, there are bilateral symmetric nephrograms visible on the CT scan."
+    $ temp_image_input_kidney = renpy.input("Enter a single coronal image number (94-253) that shows the nephrograms:", length=3, allow="0123456789")
+    $ temp_image_input_kidney = temp_image_input_kidney.strip()
+    if not validate_kidney_input():
+        a "Invalid input. Please try again."
+        jump kidney_image_input_nephrograms
+    jump kidney_image_selection_nephrograms
+
+label kidney_image_selection_nephrograms:
+    scene bg readingroom
+    a "You selected image number [store.kidney_images] for the nephrograms."
+    if store.kidney_images in range(183, 188):
+        a "Correct, the nephrograms are visible between images 183 and 187."
+        $ chole_score += 1
+        $ total_score = appy_score + chole_score + div_score
+    else:
+        a "Incorrect. nephrograms are not in axial image number [store.kidney_images]."
+        a "The correct images are between 183 and 187"
+        $ chole_score -= 1
+        $ total_score = appy_score + chole_score + div_score
+    image bilateral symmetric nephrograms = "chole/bilateral_symmetric_nephrograms@2.png"
+    show bilateral symmetric nephrograms at right_middle
+    a "There are bilateral symmetric nephrograms without hydronephrosis."
+    a "This finding occurs when intravenous contrast media is retained by both kidneys for more than 3 minutes."
+    a "Causes include systemic hypotension, bilateral intrarenal obstruction, bilateral renal artery/vein stenosis, or bilateral obstructive uropathy among others."
+    hide bilateral symmetric nephrograms
+    call screen kidney_benign_menu
+
+label GI_Chole:
+    scene bg readingroom
+    a "Now, let's review the GI tract findings."
+    a "You reported the GI tract as: [player_answers_chole['GI_tract']]"
+    if player_answers_chole["GI_tract"] == correct_answers_chole["GI_tract"]:
+        a "Correct, the GI tract has benign findings."
+    else:
+        a "Incorrect. The GI tract has benign findings, but you reported: [player_answers_chole['GI_tract']]"
+    call screen GI_tract_benign_menu
