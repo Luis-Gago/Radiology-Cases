@@ -192,7 +192,7 @@ label bodywall_chole:
     else:
         a "Incorrect. The body wall has a benign finding, but you reported: [player_answers_chole['bodywall']]"
     a "Can you see the benign finding in the body wall on the CT images?"
-    a "Which images show the benign finding in the body wall?"
+    a "Which axial images show the benign finding in the body wall? Identify an image number now. You will input it on the next screen."
     
     jump bodywall_image_input
     
@@ -322,7 +322,7 @@ label chest_chole:
         a "Can you identify for me which coronal images detail the benign chest finding?"
     else:
         a "Incorrect. The chest has a benign finding, but you reported: [player_answers_chole['chest']]"
-        a "Can you identify for me which coronal images detail the benign chest finding?"
+        a "Can you identify for me which coronal images detail the benign chest finding? Identify an image number now. You will input it on the next screen."
     
     jump chest_image_input
 
@@ -415,7 +415,7 @@ label gallbladder_chole:
         
     else:
         a "Incorrect. The gallbladder has a pathological finding, but you reported: [player_answers_chole['gallbladder']]"
-    a "Enter an image number that shows the pathological finding in the gallbladder in the axial images."
+    a "Enter an image number that shows the pathological finding in the gallbladder in the axial images. Identify an image number now. You will input it on the next screen."
 
     jump gallbladder_image_input
 
@@ -673,7 +673,7 @@ label kidney_benign_incorrect:
 
 label kidney_image_input_stone:
     $ can_move_to_kidney_stone_menu = True
-    a "Correct, there is a punctate calcification visible on the CT scan."
+    a "Correct, there is a punctate calcification visible on the CT scan. Can you see which coronal image it is visible on? Identify an image number now. You will input it on the next screen."
     $ temp_image_input_kidney = renpy.input("Enter a single coronal image number (94-253) that shows the punctate calcification:", length=3, allow="0123456789")
     $ temp_image_input_kidney = temp_image_input_kidney.strip()
     if not validate_kidney_input():
@@ -701,7 +701,7 @@ label kidney_image_selection_stone:
 
 label kidney_image_input_nephrograms:
     $ can_move_to_kidney_nephrograms_menu = True
-    a "Correct, there are bilateral symmetric nephrograms visible on the CT scan."
+    a "Correct, there are bilateral symmetric nephrograms visible on the CT scan. Can you identify which coronal image they are visible on? Identify an image number now. You will input it on the next screen."
     $ temp_image_input_kidney = renpy.input("Enter a single coronal image number (94-253) that shows the nephrograms:", length=3, allow="0123456789")
     $ temp_image_input_kidney = temp_image_input_kidney.strip()
     if not validate_kidney_input():
