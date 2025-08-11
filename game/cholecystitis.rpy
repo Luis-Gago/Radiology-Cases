@@ -95,6 +95,7 @@ label cholecystitis:
     $ can_move_to_gallbladder_fatstranding_correct_menu = False
     $ can_move_to_kidney_stone_menu = False
     $ can_move_to_kidney_nephrograms_menu = False
+    $ can_move_to_diverticula_menu = False
 
     scene bg readingroom
     a "You have selected Case Two."
@@ -160,7 +161,7 @@ label cholecystitis:
 label end_cholecystitis:
     scene bg readingroom
     a "You have completed this case. Let's see how you did."
-    a "You scored [chole_score] out of x."
+    a "You scored [chole_score] out of 26."
 
     $ physical_text = ""
     $ vitals_text = ""
@@ -737,3 +738,115 @@ label GI_Chole:
     else:
         a "Incorrect. The GI tract has benign findings, but you reported: [player_answers_chole['GI_tract']]"
     call screen GI_tract_benign_menu
+
+screen GI_tract_benign_menu():
+    frame:
+        xalign 1.0
+        yalign 0.2
+        xsize 700  # Set a fixed width for a more vertical look
+        ypadding 40
+        vbox:
+            spacing 20  # Adds space between buttons
+            text "What is the benign finding in the GI tract?" xalign 0.5
+            textbutton "Bowel obstruction" action Jump("GI_benign_incorrect") xalign 0.5
+            textbutton "Diverticulitis" action Jump("GI_benign_incorrect") xalign 0.5
+            if can_move_to_diverticula_menu == False:
+                textbutton "Scattered diverticula" action [SetVariable("chole_score", chole_score + 1), Jump("GI_benign_correct")] xalign 0.5
+            textbutton "Multifocal segmental stricture" action Jump("GI_benign_incorrect") xalign 0.5
+            if can_move_to_diverticula_menu:
+                textbutton "Continue" action Jump("chole_diagnosis") xalign 0.5 text_color "#FFD600"
+
+label GI_benign_incorrect:
+    scene bg readingroom
+    a "Incorrect. This is not a finding in the GI tract."
+    $ chole_score -= 1
+    $ total_score = appy_score + chole_score + div_score
+
+    call screen GI_tract_benign_menu
+
+label GI_benign_correct:
+    $ can_move_to_diverticula_menu = True
+    scene bg readingroom
+    image diverticula example = "chole/diverticula_example@2.png"
+    image diverticula example 1 = "chole/diverticula_example_1@0.7.jpg"
+    image diverticula example 2 = "chole/diverticula_example_2.jpg"
+    show diverticula example at right_middle
+    a "Correct. Scattered diverticula are the benign finding in the GI tract."
+    a "Colonic diverticula are almost all false diverticula and are composed of mucosa herniating through a defect in the muscularis and covered by overlying serosa."
+    hide diverticula example
+    show diverticula example 1 at right_middle
+    a "Here is an example of an axial scan showing diverticulosis:"
+    a "Their formation is thought to relate to increased intraluminal pressure which may result from low volume stool."
+    a "Increased pressure is thought to be related to chronic constipation and straining."
+    hide diverticula example 1
+    show diverticula example 2 at right_middle
+    a "Colonic diverticula are most common in the sigmoid colon and, to a lesser extent, in the descending colon."
+    hide diverticula example 2
+    $ chole_score += 1
+    $ total_score = appy_score + chole_score + div_score
+    call screen GI_tract_benign_menu
+
+
+# Diagnosis Section
+label chole_diagnosis:
+
+    hide screen DICOMViewer
+
+    scene bg readingroom
+    a "Now, let's summarize your findings."
+    a "What do you think the diagnosis is?"
+    menu:
+        "Acute Appendicitis":
+            a "Incorrect, this is not the diagnosis for this case."
+            a "The correct answer is cholecystitis. The key findings include gallbladder distention/wall thickening, pericholecystic fluid, and the presence of fat stranding."
+            $ chole_score -= 1
+            $ total_score = appy_score + chole_score + div_score
+        
+        "Cholecystitis":
+            a "Correct, the diagnosis is cholecystitis."
+            a "The key findings include gallbladder distention/wall thickening, pericholecystic fluid, and the presence of fat stranding."
+            $ chole_score += 1
+            $ total_score = appy_score + chole_score + div_score
+         
+        "Diverticulitis":
+            a "Incorrect, this is not the diagnosis for this case."
+            a "The correct answer is cholecystitis. The key findings include gallbladder distention/wall thickening, pericholecystic fluid, and the presence of fat stranding."
+            $ chole_score -= 1
+            $ total_score = appy_score + chole_score + div_score
+        
+        "Pancreatitis":
+            a "Incorrect, this is not the diagnosis for this case."
+            a "The correct answer is cholecystitis. The key findings include gallbladder distention/wall thickening, pericholecystic fluid, and the presence of fat stranding."
+            $ chole_score -= 1
+            $ total_score = appy_score + chole_score + div_score
+    
+    a "Note some other key findings from the case:"
+    a "Right upper quadrant ultrasound found:"
+    a "\"There is cholelithiasis, gallbladder wall thickening and some pericholecystic fluid. Findings are consistent with acute cholecystitis in the appropriate clinical setting.\""
+    a "History of new epigastric pain that became diffuse after onset of N/V/D."
+    a "And note that eventually their white count came back elevated: White Cell Count 13.5"
+
+    a "How do you think the patient should be managed?"
+    menu:
+        "Immediate surgical intervention":
+            a "Correct, surgical intervention is the appropriate management for acute cholecystitis."
+            $ chole_score += 1
+            $ total_score = appy_score + chole_score + div_score
+        "Medical management":
+            a "Incorrect, medical management is not appropriate for acute cholecystitis."
+            a "The standard management is surgical intervention."
+            $ chole_score -= 1
+            $ total_score = appy_score + chole_score + div_score
+        "Observation":
+            a "Incorrect, observation is not appropriate for acute cholecystitis."
+            a "The standard management is surgical intervention."
+            $ chole_score -= 1
+            $ total_score = appy_score + chole_score + div_score
+    
+    a "Would you like to restart the case or return to the main menu?"
+    menu:
+        "Restart Case":
+            jump cholecystitis
+
+        "Return to Main Menu":
+            jump end_cholecystitis
