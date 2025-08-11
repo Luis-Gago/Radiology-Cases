@@ -1,87 +1,13 @@
-2025-08-11 17:48:26 UTC
+2025-08-11 20:30:36 UTC
 macOS-15.3.2-arm64-arm-64bit
 Ren'Py 8.4.1.25072401
 
 Early init took 35 ms
-Loading error handling took 26 ms
+Loading error handling took 25 ms
 Loading script took 499 ms
-Loading save slot metadata took 17 ms
+Loading save slot metadata took 15 ms
 Loading persistent took 0 ms
 Running init code took 49 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 17 ms
-DPI scale factor: 1.000000
-Creating interface object took 1 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 10 ms
-Save pyanalysis took 3 ms
-Save bytecode took 17 ms
-Running _start took 0 ms
-Interface start took 2588 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 14 ms
-Loading error handling took 17 ms
-Loading script took 121 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-Running init code took 26 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 4 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 21 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 24 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 211 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 16 ms
-Loading error handling took 17 ms
-Loading script took 135 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 27 ms
 Loading analysis data took 2 ms
 Analyze and compile ATL took 1 ms
 Reloading save slot metadata took 4 ms
@@ -89,181 +15,13 @@ Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Case
 Dump and make backups took 22 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 25 ms
+Initial gc took 16 ms
 DPI scale factor: 1.000000
-Creating interface object took 0 ms
+Creating interface object took 1 ms
 Init translation took 1 ms
 Cleaning stores took 0 ms
 Load screen analysis took 0 ms
 Analyze screens took 5 ms
-Save screen analysis took 8 ms
+Save screen analysis took 7 ms
 Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 152 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 15 ms
-Loading error handling took 17 ms
-Loading script took 124 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-Running init code took 27 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 26 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 150 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 16 ms
-Loading error handling took 15 ms
-Loading script took 123 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-Running init code took 26 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 4 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 21 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 28 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 9 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 210 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 21 ms
-Loading error handling took 9 ms
-Loading script took 121 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-Running init code took 26 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 4 ms
-Backing up script files to '/Users/luisgago/Library/RenPy/backups/Radiology Cases':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 35 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 187 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 16 ms
-Loading error handling took 9 ms
-Loading script took 49 ms
-Loading save slot metadata took 8 ms
-Loading persistent took 0 ms
-Running init code took 27 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 2 ms
-Dump and make backups took 20 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 22 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 9 ms
-Analyze screens took 0 ms
-Save screen analysis took 0 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 172 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M2'
-Version: '2.1 Metal - 89.3'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1470, 'current_h': 956, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
-Cleaning stores took 1 ms
-Load screen analysis took 24 ms
-Analyze screens took 0 ms
-Running _start took 2 ms
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(2904, 1634)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1452, 817) drawable=(1452, 817)
-Maximum texture size: 4096x4096
+Save bytecode took 15 ms
