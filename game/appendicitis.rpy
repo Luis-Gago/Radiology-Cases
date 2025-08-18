@@ -1,7 +1,7 @@
 label appendicitis:
 
     scene bg readingroom
-    a "You have selected Case One."
+    a "You have selected Emergency Case One."
     a "A patient has been brought into the ED and has been scanned with \"the tube of truth\" aka the CT scanner."
     a "You are being tasked with reading their CT abdomen pelvis with contrast."
     a "Use the EHR and PACS to fill out the report template I have provided."
@@ -134,7 +134,7 @@ label chest_nodule:
     a "Hold on I have another example somewhere..."
     hide appy nodule
     show appy chest example at right_middle
-    a "If peripheral nodules have all the typical features of intraparenchymal lymph nodes they are likely to be benign and follow-up at 1 year may be appropriate"
+    a "If peripheral nodules have all the typical features of intraparenchymal lymph nodes they are likely to be benign and follow-up at 1 year may be appropriate."
     hide appy chest example
 
     call screen chest_menu

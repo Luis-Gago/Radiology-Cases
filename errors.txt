@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/cholecystitis.rpy", line 473: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    xalign 0.5
-    ^
+The label left_asymmetry_incorrect is defined twice, at File "game/breast_case_1.rpy", line 252:
+label left_asymmetry_incorrect:
+and File "game/breast_case_1.rpy", line 287:
+label left_asymmetry_incorrect:
+
 
 Ren'Py Version: Ren'Py 8.4.1.25072401
-Sun Aug  3 22:41:48 2025
+Mon Aug 18 06:30:36 2025

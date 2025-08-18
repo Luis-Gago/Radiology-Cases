@@ -98,7 +98,7 @@ label cholecystitis:
     $ can_move_to_diverticula_menu = False
 
     scene bg readingroom
-    a "You have selected Case Two."
+    a "You have selected Emergency Case Two."
     a "A patient has been brought into the ED and has been scanned with \"the tube of truth\" aka the CT scanner."
     a "You are being tasked with reading their CT abdomen pelvis with contrast."
     a "Use the EHR and PACS to fill out the report template I have provided."

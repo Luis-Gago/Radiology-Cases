@@ -1,35 +1,27 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/cholecystitis.rpy", line 739, in script
-    call screen GI_tract_benign_menu
-renpy.display.screen.ScreenNotFound: Screen 'GI_tract_benign_menu' is not known.
+  File "game/breast_case_1.rpy", line 393, in script call
+    call left_breast_mass_menu()
+  File "game/breast_case_1.rpy", line 393, in script call
+    call left_breast_mass_menu()
+renpy.script.LabelNotFound: could not find label 'left_breast_mass_menu'. Did you mean: 'left_breast_mass'?
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/cholecystitis.rpy", line 739, in script
-    call screen GI_tract_benign_menu
-  File "renpy/ast.py", line 2231, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 379, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 334, in call_screen
-    renpy.exports.show_screen(_screen_name, *args, _transient=True, **kwargs)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 1355, in show_screen
-    raise ScreenNotFound(name[0])
-renpy.display.screen.ScreenNotFound: Screen 'GI_tract_benign_menu' is not known.
+  File "game/breast_case_1.rpy", line 393, in script call
+    call left_breast_mass_menu()
+  File "renpy/ast.py", line 1622, in execute
+    rv = renpy.game.context().call(label, return_site=self.next.name)
+         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/breast_case_1.rpy", line 393, in script call
+    call left_breast_mass_menu()
+  File "renpy/script.py", line 1161, in lookup
+    raise LabelNotFound(original)
+renpy.script.LabelNotFound: could not find label 'left_breast_mass_menu'. Did you mean: 'left_breast_mass'?
 
 macOS-15.3.2-arm64-arm-64bit arm64
 Ren'Py 8.4.1.25072401
 Radiology Cases 1.0
-Fri Aug  8 16:36:15 2025
+Mon Aug 18 06:55:02 2025

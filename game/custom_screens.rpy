@@ -201,13 +201,17 @@ screen persistent_menu():
                         textbutton "Vitals" action [ToggleVariable("vitals_visible"), SetVariable("menu_notification", False)] text_color "#FFD600"
                     if show_labs:
                         textbutton "Labs" action [ToggleVariable("labs_visible"), SetVariable("menu_notification", False)] text_color "#FFD600"
-                    
+                    if show_history:
+                        textbutton "History" action [ToggleVariable("history_visible"), SetVariable("menu_notification", False)] text_color "#FFD600"
+
                     if physical_visible:
                         use Physical
                     if vitals_visible:
                         use Vitals
                     if labs_visible:
                         use Labs
+                    if history_visible:
+                        use History
 
 style menu_header:
     size 24
@@ -251,6 +255,13 @@ screen Labs():
         vbox:
             text "Labs"
             text "[labs_text]"  # Use a variable for dynamic content
+
+screen History():
+    frame:
+        style "menu_content_frame"
+        vbox:
+            text "History"
+            text "[history_text]"  # Use a variable for dynamic content
 
 # Style for the small text used in the Radiology Report appy screen
 style small_text:
@@ -426,5 +437,91 @@ screen RadiologyReportCholecystitis():
             textbutton "Submit Report" action Return() text_color "#FFD600" text_style "very_small_text"
 
 
+# Radiology Report screen for Breast Imaging
+screen RadiologyReportBreast():
+
+    default right_breast_calcifications_status = ""
+    default left_breast_calcifications_status = ""
+    default left_breast_asymmetry_status = ""
+    default right_breast_asymmetry_status = ""
+    default left_breast_mass_status = ""
+    default right_breast_mass_status = ""
+    default density_status = ""
+
+    frame:
+        style "menu_content_frame"
+        xalign 1.0
+        yalign 0.0
+        xmaximum 700
+        xfill True
+        vbox:
+            spacing 0
+            xmaximum 700
+            xfill True
+
+            text "Radiology Report" style "menu_header"
+
+            text "Density:" style "very_small_text"
+            text "[density_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "A" action [SetScreenVariable("density_status", "A: Fatty"), Function(player_answers_breast.__setitem__, 'density', "A: Fatty")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "B" action [SetScreenVariable("density_status", "B: Scattered"), Function(player_answers_breast.__setitem__, 'density', "B: Scattered")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "C" action [SetScreenVariable("density_status", "C: Heterogeneously dense"), Function(player_answers_breast.__setitem__, 'density', "C: Heterogeneously dense")] text_color "#F44336" text_style "very_small_text"
+                textbutton "D" action [SetScreenVariable("density_status", "D: Extremely dense"), Function(player_answers_breast.__setitem__, 'density', "D: Extremely dense")] text_color "#000000" text_style "very_small_text"
+
+            text "Left Breast Calcifications:" style "very_small_text"
+            text "[left_breast_calcifications_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("left_breast_calcifications_status", "No calcifications present."), Function(player_answers_breast.__setitem__, 'left_breast_calcifications', "No calcifications present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Benign" action [SetScreenVariable("left_breast_calcifications_status", "Probably benign calcifications present."), Function(player_answers_breast.__setitem__, 'left_breast_calcifications', "Probably benign calcifications present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Suspicious" action [SetScreenVariable("left_breast_calcifications_status", "Suspicious calcifications noted."), Function(player_answers_breast.__setitem__, 'left_breast_calcifications', "Suspicious calcifications noted.")] text_color "#F44336" text_style "very_small_text"
+
+            text "Right Breast Calcifications:" style "very_small_text"
+            text "[right_breast_calcifications_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("right_breast_calcifications_status", "No calcifications present."), Function(player_answers_breast.__setitem__, 'right_breast_calcifications', "No calcifications present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Benign" action [SetScreenVariable("right_breast_calcifications_status", "Probably benign calcifications present."), Function(player_answers_breast.__setitem__, 'right_breast_calcifications', "Probably benign calcifications present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Suspicious" action [SetScreenVariable("right_breast_calcifications_status", "Suspicious calcifications noted."), Function(player_answers_breast.__setitem__, 'right_breast_calcifications', "Suspicious calcifications noted.")] text_color "#F44336" text_style "very_small_text"
+
+            text "Left Breast Asymmetry:" style "very_small_text"
+            text "[left_breast_asymmetry_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("left_breast_asymmetry_status", "No asymmetry present."), Function(player_answers_breast.__setitem__, 'left_breast_asymmetry', "No asymmetry present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Asymmetry" action [SetScreenVariable("left_breast_asymmetry_status", "Asymmetry present."), Function(player_answers_breast.__setitem__, 'left_breast_asymmetry', "Asymmetry present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Global" action [SetScreenVariable("left_breast_asymmetry_status", "Global Asymmetry noted."), Function(player_answers_breast.__setitem__, 'left_breast_asymmetry', "Global Asymmetry noted.")] text_color "#F44336" text_style "very_small_text"
+                textbutton "Focal" action [SetScreenVariable("left_breast_asymmetry_status", "Focal Asymmetry noted."), Function(player_answers_breast.__setitem__, 'left_breast_asymmetry', "Focal Asymmetry noted.")] text_color "#b504cc" text_style "very_small_text"
+
+            text "Right Breast Asymmetry:" style "very_small_text"
+            text "[right_breast_asymmetry_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("right_breast_asymmetry_status", "No asymmetry present."), Function(player_answers_breast.__setitem__, 'right_breast_asymmetry', "No asymmetry present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Asymmetry" action [SetScreenVariable("right_breast_asymmetry_status", "Asymmetry present."), Function(player_answers_breast.__setitem__, 'right_breast_asymmetry', "Asymmetry present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Global" action [SetScreenVariable("right_breast_asymmetry_status", "Global Asymmetry noted."), Function(player_answers_breast.__setitem__, 'right_breast_asymmetry', "Global Asymmetry noted.")] text_color "#F44336" text_style "very_small_text"
+                textbutton "Focal" action [SetScreenVariable("right_breast_asymmetry_status", "Focal Asymmetry noted."), Function(player_answers_breast.__setitem__, 'right_breast_asymmetry', "Focal Asymmetry noted.")] text_color "#b504cc" text_style "very_small_text"
+
+            text "Left Breast Mass:" style "very_small_text"
+            text "[left_breast_mass_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("left_breast_mass_status", "No mass present."), Function(player_answers_breast.__setitem__, 'left_breast_mass', "No mass present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Benign" action [SetScreenVariable("left_breast_mass_status", "Benign mass present."), Function(player_answers_breast.__setitem__, 'left_breast_mass', "Benign mass present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Probably Benign" action [SetScreenVariable("left_breast_mass_status", "Probably benign mass present."), Function(player_answers_breast.__setitem__, 'left_breast_mass', "Probably benign mass present.")] text_color "#b504cc" text_style "very_small_text"
+                textbutton "Suspicious" action [SetScreenVariable("left_breast_mass_status", "Suspicious mass noted."), Function(player_answers_breast.__setitem__, 'left_breast_mass', "Suspicious mass noted.")] text_color "#F44336" text_style "very_small_text"
+
+            text "Right Breast Mass:" style "very_small_text"
+            text "[right_breast_mass_status]" style "very_small_text"
+            hbox:
+                spacing 5
+                textbutton "None" action [SetScreenVariable("right_breast_mass_status", "No mass present."), Function(player_answers_breast.__setitem__, 'right_breast_mass', "No mass present.")] text_color "#4CAF50" text_style "very_small_text"
+                textbutton "Benign" action [SetScreenVariable("right_breast_mass_status", "Benign mass present."), Function(player_answers_breast.__setitem__, 'right_breast_mass', "Benign mass present.")] text_color "#2196F3" text_style "very_small_text"
+                textbutton "Probably Benign" action [SetScreenVariable("right_breast_mass_status", "Probably benign mass present."), Function(player_answers_breast.__setitem__, 'right_breast_mass', "Probably benign mass present.")] text_color "#b504cc" text_style "very_small_text"
+                textbutton "Suspicious" action [SetScreenVariable("right_breast_mass_status", "Suspicious mass noted."), Function(player_answers_breast.__setitem__, 'right_breast_mass', "Suspicious mass noted.")] text_color "#F44336" text_style "very_small_text"
+
+            textbutton "Submit Report" action Return() text_color "#FFD600" text_style "very_small_text"
 
 
