@@ -33,6 +33,7 @@ default history_text = ""
 default show_physical = False
 default show_vitals = False 
 default show_labs = False
+default show_history = False
 default physical_visible = False
 default vitals_visible = False  
 default labs_visible = False
