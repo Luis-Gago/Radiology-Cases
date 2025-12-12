@@ -1,7 +1,7 @@
 ﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
-# name of the character.
+# name of the character. Test
 
 define a = Character("Dr. Levine", image="DrLevine", color="#c70909c1")
 define l = Character("Luis Gago", image="LuisGago", color="#c70909c1")
